@@ -1,58 +1,59 @@
-/**
- * 
- */
 package leer;
 
-/**
-*@author luiscachofabregat
- *
- *
- */
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Leer {
 
-	public static String dato() {
-		String sdato = " ";
-		try {
-			InputStreamReader isr = new InputStreamReader(System.in);
-			BufferedReader flujoE = new BufferedReader(isr);
-			sdato = flujoE.readLine();
-		} catch (IOException e) {
-			System.out.println("Error " + e.getMessage());
-		}
-		return sdato;
+    private static final BufferedReader flujoEntrada = new BufferedReader(new InputStreamReader(System.in));
 
-	}
+    // Método para leer una línea de texto desde la consola y eliminar espacios extra.
+    public static String dato() {
+        try {
+            return flujoEntrada.readLine().trim();
+        } catch (IOException e) {
+            System.err.println("Error al leer entrada: " + e.getMessage());
+            return "";
+        }
+    }
 
-	public static int datoInt() {
-		return Integer.parseInt(dato());
-	}
+    /**
+     * Método para leer un entero desde la consola.
+     * Convierte la entrada de texto a un valor entero. En caso de error de formato, muestra un mensaje y retorna 0.
+     */
+    public static int datoInt() {
+        try {
+            return Integer.parseInt(dato());
+        } catch (NumberFormatException e) {
+            System.err.println("Error al convertir a entero: " + e.getMessage());
+            return 0;
+        }
+    }
 
-	public static float datoFloat() {
-		return Float.parseFloat(dato());
-	}
+    /**
+     * Método para leer un flotante desde la consola.
+     * Convierte la entrada de texto a un valor flotante. En caso de error de formato, muestra un mensaje y retorna 0.0f.
+     */
+    public static float datoFloat() {
+        try {
+            return Float.parseFloat(dato());
+        } catch (NumberFormatException e) {
+            System.err.println("Error al convertir a flotante: " + e.getMessage());
+            return 0.0f;
+        }
+    }
 
-	// Leer un char por teclado
-
-	public static char datoChar() {
-		char c = ' ';
-		try {
-			java.io.BufferedInputStream b = new BufferedInputStream(System.in);
-			c = (char) b.read();
-		} catch (IOException e) {
-			System.out.println("Error al leer");
-			e.printStackTrace();
-		}
-		return c;
-	}
-
-	public static long datoLong() {
-		return Long.parseLong(dato());
-	}
-
+    /**
+     * Método para leer un largo desde la consola.
+     * Convierte la entrada de texto a un valor largo. En caso de error de formato, muestra un mensaje y retorna 0L.
+     */
+    public static long datoLong() {
+        try {
+            return Long.parseLong(dato());
+        } catch (NumberFormatException e) {
+            System.err.println("Error al convertir a largo: " + e.getMessage());
+            return 0L;
+        }
+    }
 }
-

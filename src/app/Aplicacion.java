@@ -1,73 +1,34 @@
-/**
- * 
- */
 package app;
 
-/**
-*@author luiscachofabregat
-*
-*
- */
 import leer.Leer;
+import menu.Menu;
 
 public class Aplicacion {
 
-	
-	public static void Mensaje_Inicial() {
+    public static void main(String[] args) {
 
-		System.out.println("Bienvenido a la tienda virtual\n\n"
-				+ "El programa simula una tienda que vende juegos, música y cine\n"
-				+ "Solamente se pueden vender productos si aparecen disponibles en la tienda\n"
-		);
-	}
+        Menu.mensajeInicial();
 
-	
-	public static void Opciones_Menu() {
+        boolean continuar = true;
 
-		System.out.println("\nSeleccione que desea realizar:\n\n" + "\t1. Mostrar productos. (Listar productos)\n"
-				+ "\t2. Comprar productos\n" + "\t3. Mostrar caja. (Importe total de la compra actual)\n"
-				+ "\tSALIR --> Pulse cualquier otro número\n");
-	}
+        do {
+            Menu.opcionesMenu();
+            int opcion = Leer.datoInt();
+            switch (opcion) {
+            case 1:
+                // Implementación de mostrar productos
+                break;
+            case 2:
+                // Implementación de comprar productos
+                break;
+            case 3:
+                // Implementación de mostrar caja
+                break;
+            default:
+                continuar = false;
+            }
+        } while (continuar);
 
-	public static void Mensaje_Fin() {
-
-		System.out.println("---- Gracias por usar este software. ----");
-	}
-
-	
-
-	public static void main(String[] args) {
-
-		Mensaje_Inicial();
-
-		boolean continuar = true;
-
-		do {
-
-			Opciones_Menu();
-
-			switch (Leer.datoInt()) {
-			case 1:
-
-				break;
-			case 2:
-				
-
-				break;
-			case 3:
-
-				break;
-			default:
-				
-				// Se sale del programa
-				continuar = false;
-			}
-
-		} while (continuar);
-
-		Mensaje_Fin();
-
-	}
-
+        Menu.mensajeFin();
+    }
 }
-
